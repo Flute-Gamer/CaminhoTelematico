@@ -1,0 +1,26 @@
+[gd_resource type="AudioBusLayout" format=3 uid="uid://vuhegasvv846"]
+
+[sub_resource type="AudioEffectRecord" id="AudioEffectRecord_j3pel"]
+resource_name = "Record"
+
+[sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_j3pel"]
+resource_name = "SpectrumAnalyzer"
+fft_size = 4
+
+[resource]
+bus/1/name = &"RecordOutput"
+bus/1/solo = false
+bus/1/mute = true
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = &"Master"
+bus/2/name = &"Record"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = -0.0038433075
+bus/2/send = &"RecordOutput"
+bus/2/effect/0/effect = SubResource("AudioEffectRecord_j3pel")
+bus/2/effect/0/enabled = true
+bus/2/effect/1/effect = SubResource("AudioEffectSpectrumAnalyzer_j3pel")
+bus/2/effect/1/enabled = true

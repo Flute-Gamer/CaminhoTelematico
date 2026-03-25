@@ -1,0 +1,158 @@
+[gd_scene format=3 uid="uid://dbnfw25vsfxlk"]
+
+[ext_resource type="Script" uid="uid://cmphounixw61e" path="res://pai.gd" id="1_aqk2v"]
+[ext_resource type="Script" uid="uid://4sddal3bftol" path="res://mesh_instance_3d.gd" id="1_f3sb7"]
+[ext_resource type="Script" uid="uid://ceqmaxgmiwjix" path="res://camera.gd" id="2_tlwt5"]
+[ext_resource type="Script" uid="uid://bw1q05dipakgt" path="res://z_omni_light_3d.gd" id="4_036b0"]
+[ext_resource type="Script" uid="uid://bchdynwm7obo0" path="res://cameralight.gd" id="4_dwbse"]
+[ext_resource type="Script" uid="uid://xe2c6h7tj76v" path="res://y_omni_light_3d.gd" id="5_dwbse"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_gv5m4"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_036b0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f3sb7"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_aqk2v"]
+
+[node name="World" type="Node3D" unique_id=987463657]
+
+[node name="Pai" type="Node3D" parent="." unique_id=1196302755]
+script = ExtResource("1_aqk2v")
+speed = 1
+
+[node name="Cube" type="MeshInstance3D" parent="Pai" unique_id=1486488004]
+mesh = SubResource("BoxMesh_gv5m4")
+script = ExtResource("1_f3sb7")
+
+[node name="Camera" type="Camera3D" parent="Pai" unique_id=299897857]
+transform = Transform3D(-4.010784e-08, 0.39759636, -0.91756046, 1.7379488e-08, 0.91756046, 0.39759636, 1, 0, -4.371139e-08, -3.7666688, 1.6848404, 0)
+fov = 70.0
+script = ExtResource("2_tlwt5")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Pai/Camera" unique_id=293032254]
+transform = Transform3D(1, -1.7763568e-15, 0, 0, 0.99999994, 5.9604645e-08, 0, -5.9604645e-08, 0.99999994, 3.064129e-08, 0.17599511, 0.7009907)
+light_energy = 3.0
+omni_range = 111.286
+script = ExtResource("4_dwbse")
+
+[node name="Lights" type="Node3D" parent="Pai" unique_id=1306809523]
+
+[node name="ZOmniLight3D0" type="OmniLight3D" parent="Pai/Lights" unique_id=1103228779]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2)
+light_energy = 3.0
+omni_range = 300.0
+script = ExtResource("4_036b0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pai/Lights/ZOmniLight3D0" unique_id=573807403]
+transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, 0, 0, 0)
+mesh = SubResource("SphereMesh_036b0")
+
+[node name="ZOmniLight3D1" type="OmniLight3D" parent="Pai/Lights" unique_id=2101317439]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 2)
+light_energy = 3.0
+omni_range = 300.0
+script = ExtResource("4_036b0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pai/Lights/ZOmniLight3D1" unique_id=1977356125]
+transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, 0, 0, 0)
+mesh = SubResource("SphereMesh_036b0")
+
+[node name="ZOmniLight3D2" type="OmniLight3D" parent="Pai/Lights" unique_id=735592870]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2)
+light_energy = 3.0
+omni_range = 300.0
+script = ExtResource("4_036b0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pai/Lights/ZOmniLight3D2" unique_id=1334879155]
+transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, 0, 0, 0)
+mesh = SubResource("SphereMesh_036b0")
+
+[node name="ZOmniLight3D4" type="OmniLight3D" parent="Pai/Lights" unique_id=1137170258]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -2)
+light_energy = 3.0
+omni_range = 300.0
+script = ExtResource("4_036b0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pai/Lights/ZOmniLight3D4" unique_id=1729437915]
+transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, 0, 0, 0)
+mesh = SubResource("SphereMesh_036b0")
+
+[node name="YOmniLight3D0" type="OmniLight3D" parent="Pai/Lights" unique_id=2066287689]
+transform = Transform3D(0.0008551636, 0, 0.99999964, 0, 1, 0, -0.99999964, 0, 0.0008551636, 1.9999993, 2, 0.0017103272)
+light_energy = 3.0
+omni_range = 300.0
+script = ExtResource("5_dwbse")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pai/Lights/YOmniLight3D0" unique_id=254299146]
+transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, 0, 0, 0)
+mesh = SubResource("SphereMesh_036b0")
+
+[node name="YOmniLight3D1" type="OmniLight3D" parent="Pai/Lights" unique_id=421269765]
+transform = Transform3D(0.0008551636, 0, 0.99999964, 0, 1, 0, -0.99999964, 0, 0.0008551636, 1.9999993, -2, 0.0017103272)
+light_energy = 3.0
+omni_range = 300.0
+script = ExtResource("5_dwbse")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pai/Lights/YOmniLight3D1" unique_id=1082017611]
+transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, 0, 0, 0)
+mesh = SubResource("SphereMesh_036b0")
+
+[node name="YOmniLight3D2" type="OmniLight3D" parent="Pai/Lights" unique_id=448663431]
+transform = Transform3D(0.0008551636, 0, 0.99999964, 0, 1, 0, -0.99999964, 0, 0.0008551636, -1.9999993, 2, -0.0017103272)
+light_energy = 3.0
+omni_range = 300.0
+script = ExtResource("5_dwbse")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pai/Lights/YOmniLight3D2" unique_id=952559315]
+transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, 0, 0, 0)
+mesh = SubResource("SphereMesh_036b0")
+
+[node name="YOmniLight3D4" type="OmniLight3D" parent="Pai/Lights" unique_id=1931956043]
+transform = Transform3D(0.0008551636, 0, 0.99999964, 0, 1, 0, -0.99999964, 0, 0.0008551636, -1.9999993, -2, -0.0017103272)
+light_energy = 3.0
+omni_range = 300.0
+script = ExtResource("5_dwbse")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pai/Lights/YOmniLight3D4" unique_id=1651858253]
+transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, 0, 0, 0)
+mesh = SubResource("SphereMesh_036b0")
+
+[node name="Walls" type="Node3D" parent="." unique_id=229416377]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 2)
+
+[node name="Wall0" type="MeshInstance3D" parent="Walls" unique_id=668677231]
+transform = Transform3D(438.97284, 0, 0, 0, 42.066, 0, 0, 0, 1.226, 190.27792, 2, 8)
+mesh = SubResource("BoxMesh_gv5m4")
+surface_material_override/0 = SubResource("StandardMaterial3D_f3sb7")
+
+[node name="Wall1" type="MeshInstance3D" parent="Walls" unique_id=879837986]
+transform = Transform3D(438.97284, 0, 0, 0, 42.066, 0, 0, 0, 1.226, 190.27792, 2, -12)
+mesh = SubResource("BoxMesh_gv5m4")
+surface_material_override/0 = SubResource("StandardMaterial3D_f3sb7")
+
+[node name="Wall2" type="MeshInstance3D" parent="Walls" unique_id=1442061384]
+transform = Transform3D(438.97284, 0, 0, 0, -1.8387633e-06, -1.226, 0, 42.066, -5.359016e-08, 190.27792, 19.119633, -2)
+mesh = SubResource("BoxMesh_gv5m4")
+surface_material_override/0 = SubResource("StandardMaterial3D_f3sb7")
+
+[node name="Wall3" type="MeshInstance3D" parent="Walls" unique_id=1431516485]
+transform = Transform3D(438.97284, 0, 0, 0, -1.8387633e-06, -1.226, 0, 42.066, -5.359016e-08, 190.27792, -14.369411, -2)
+mesh = SubResource("BoxMesh_gv5m4")
+surface_material_override/0 = SubResource("StandardMaterial3D_f3sb7")
+
+[node name="Wall4" type="MeshInstance3D" parent="Walls" unique_id=1370170880]
+transform = Transform3D(1.9106854e-13, 1.8387634e-06, 5.3818064, 100, -1.8387634e-06, 0, 4.371139e-06, 42.066, -2.3524623e-07, -21.90609, -14.369411, -2)
+mesh = SubResource("BoxMesh_gv5m4")
+surface_material_override/0 = SubResource("StandardMaterial3D_f3sb7")
+
+[node name="Wall5" type="MeshInstance3D" parent="Walls" unique_id=847280905]
+transform = Transform3D(1.9106854e-13, 1.8387634e-06, 5.3818064, 100, -1.8387634e-06, 0, 4.371139e-06, 42.066, -2.3524623e-07, 403.56412, -12.369411, -4)
+mesh = SubResource("BoxMesh_gv5m4")
+surface_material_override/0 = SubResource("StandardMaterial3D_f3sb7")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=166394602]
+stream = SubResource("AudioStreamMicrophone_aqk2v")
+autoplay = true
+bus = &"Record"
