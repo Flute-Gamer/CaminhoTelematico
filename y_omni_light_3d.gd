@@ -5,7 +5,7 @@ const MAX_SAMPLES: int = 10
 var grandParent
 var angle
 var radius
-var speed = 2
+@export var speed = 0.01
 var volume_samples: Array = []
 
 #variaveis pra luz
@@ -41,9 +41,10 @@ func _process(delta: float) -> void:
 	if volume_samples.size() > MAX_SAMPLES:
 		volume_samples.pop_back()
 	var sample_avg = average_array(volume_samples)
-	speed = sample_avg * 10
-	if speed < 0.3:
-		speed = 0.3
+
+	speed = sample_avg * 3
+	if speed < 0.025:
+		speed = 0.025
 	
 	angle += speed * delta
 	var new_x = -cos(angle) * radius

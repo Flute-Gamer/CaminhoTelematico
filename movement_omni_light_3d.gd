@@ -1,12 +1,11 @@
 extends OmniLight3D
 
-#variaveis pra girar
+#variaveis pra andar
 const MAX_SAMPLES: int = 10
 var grandParent
-var angle
-var radius
-@export var speed = 0.01
+@export var speed = 0.5
 var volume_samples: Array = []
+var initialX = 60
 
 #variaveis pra luz
 var record_live_index: int
@@ -20,11 +19,9 @@ var magnitude = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#ready para girar
+	#ready para andar
 	grandParent = get_parent().get_parent()
-	var offset = global_position - grandParent.global_position
-	radius = offset.length()
-	angle = atan2(offset.y, offset.z)
+	visible = false
 	
 	#ready para luz
 	randomize()
@@ -36,25 +33,26 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
+	if position.x < -20:
+		position.x = initialX
+		
+	if position.x > 50:
+		visible = false
+	else:
+		visible = true
+	
 	var sample = db_to_linear(AudioServer.get_bus_peak_volume_left_db(record_live_index, 0))
 	volume_samples.push_front(sample)
 	if volume_samples.size() > MAX_SAMPLES:
 		volume_samples.pop_back()
 	var sample_avg = average_array(volume_samples)
-
-	speed = sample_avg * 3
-	if speed < 0.025:
-		speed = 0.025
+	if speed < 0.1:
+		speed = 0.1
+	else:
+		speed = sample_avg * 10
+	position.x += -speed * delta
 	
-	angle += speed * delta
-	var new_y = -cos(angle) * radius
-	var new_z = sin(angle) * radius
-	global_position = grandParent.global_position + Vector3(0, new_y, new_z)
-	
-	##print(magnitude)
-	##var energy = magnitude.length()
-	##light_energy = energy * 10.0
-
 func color():
 	for i in range(bands):
 		var aud = spectrum.get_magnitude_for_frequency_range(minFreq*pow(factor, i), minFreq*pow(factor, i+1))         
@@ -87,6 +85,7 @@ func maxIndex(arr):
 		if arr[i] > arr[maxindex]:
 			maxindex = i
 	return maxindex
+	
 	
 func average_array(arr: Array) -> float:
 	var avg = 0.0
