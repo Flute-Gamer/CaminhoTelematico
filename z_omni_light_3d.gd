@@ -12,8 +12,8 @@ var volume_samples: Array = []
 var record_live_index: int
 var record_bus_index
 var spectrum
-var minFreq = 20.0
-var maxFreq = 3000.0
+@export var minFreq = 20.0
+@export var maxFreq = 5000.0
 var bands = 7
 var factor
 var magnitude = []

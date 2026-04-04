@@ -6,13 +6,14 @@ var grandParent
 @export var speed = 0.5
 var volume_samples: Array = []
 var initialX = 60
+@export var rotationspeed = 2
 
 #variaveis pra luz
 var record_live_index: int
 var record_bus_index
 var spectrum
-var minFreq = 20.0
-var maxFreq = 3000.0
+@export var minFreq = 20.0
+@export var maxFreq = 5000.0
 var bands = 7
 var factor
 var magnitude = []
@@ -20,7 +21,7 @@ var magnitude = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#ready para andar
-	grandParent = get_parent().get_parent()
+	grandParent = get_parent().get_parent().get_parent()
 	visible = false
 	
 	#ready para luz
@@ -48,10 +49,13 @@ func _process(delta: float) -> void:
 		volume_samples.pop_back()
 	var sample_avg = average_array(volume_samples)
 	if speed < 0.1:
+		rotationspeed += 0.1
 		speed = 0.1
 	else:
 		speed = sample_avg * 10
+		rotationspeed = sample_avg * 10
 	position.x += -speed * delta
+	rotation.y += rotationspeed * delta
 	
 func color():
 	for i in range(bands):
