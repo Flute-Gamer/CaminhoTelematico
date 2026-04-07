@@ -6,13 +6,13 @@
 [ext_resource type="Script" uid="uid://bw1q05dipakgt" path="res://z_omni_light_3d.gd" id="4_036b0"]
 [ext_resource type="Script" uid="uid://bchdynwm7obo0" path="res://cameralight.gd" id="4_dwbse"]
 [ext_resource type="Script" uid="uid://xe2c6h7tj76v" path="res://y_omni_light_3d.gd" id="5_dwbse"]
-[ext_resource type="Script" uid="uid://ccpn717mj1wcm" path="res://movement_omni_light_3d.gd" id="6_pkg7o"]
+[ext_resource type="Script" uid="uid://bqqfpl8dhysfe" path="res://movingwall.gd" id="7_pkg7o"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_gv5m4"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_036b0"]
 
-[sub_resource type="PrismMesh" id="PrismMesh_pkg7o"]
+[sub_resource type="BoxMesh" id="BoxMesh_dwbse"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f3sb7"]
 albedo_color = Color(0, 0, 0, 1)
@@ -122,199 +122,127 @@ script = ExtResource("5_dwbse")
 transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, 0, 0, 0)
 mesh = SubResource("SphereMesh_036b0")
 
-[node name="Movement Lights" type="Node3D" parent="Pai/Lights" unique_id=1249596006]
+[node name="MovingWalls" type="Node3D" parent="Pai" unique_id=1696697706]
 
-[node name="movementOmniLight3D" type="OmniLight3D" parent="Pai/Lights/Movement Lights" unique_id=1659971919]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 4, 4)
-light_energy = 0.208
-light_volumetric_fog_energy = 10.188
-omni_range = 1.0
-omni_attenuation = 5.0
-script = ExtResource("6_pkg7o")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pai/MovingWalls" unique_id=2019828310]
+transform = Transform3D(7, 0, 0, 0, 0.09899495, 1.4142135, 0, -0.09899495, 1.4142135, 0, 3, -5)
+mesh = SubResource("BoxMesh_dwbse")
+script = ExtResource("7_pkg7o")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pai/Lights/Movement Lights/movementOmniLight3D" unique_id=1018344862]
-transform = Transform3D(-2.1855694e-08, 0, 0.3, 0, 0.5, 0, -0.5, 0, -1.3113417e-08, 0, 0, 0)
-mesh = SubResource("PrismMesh_pkg7o")
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Pai/MovingWalls" unique_id=2102955703]
+transform = Transform3D(7, 0, 0, 0, 0.09899495, -1.4142135, 0, 0.09899495, 1.4142135, 0, -3, -5)
+mesh = SubResource("BoxMesh_dwbse")
+script = ExtResource("7_pkg7o")
 
-[node name="movementOmniLight3D2" type="OmniLight3D" parent="Pai/Lights/Movement Lights" unique_id=514118363]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 4, -4)
-light_energy = 0.208
-light_volumetric_fog_energy = 10.188
-omni_range = 1.0
-omni_attenuation = 5.0
-script = ExtResource("6_pkg7o")
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Pai/MovingWalls" unique_id=2027312679]
+transform = Transform3D(7, 0, 0, 0, 0.09899495, 1.4142135, 0, -0.09899495, 1.4142135, 0, -3, 5)
+mesh = SubResource("BoxMesh_dwbse")
+script = ExtResource("7_pkg7o")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pai/Lights/Movement Lights/movementOmniLight3D2" unique_id=801463786]
-transform = Transform3D(-2.1855694e-08, 0, 0.3, 0, 0.5, 0, -0.5, 0, -1.3113417e-08, 0, 0, 0)
-mesh = SubResource("PrismMesh_pkg7o")
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Pai/MovingWalls" unique_id=1613145002]
+transform = Transform3D(7, 0, 0, 0, 0.09899495, -1.4142135, 0, 0.09899495, 1.4142135, 0, 3, 5)
+mesh = SubResource("BoxMesh_dwbse")
+script = ExtResource("7_pkg7o")
 
-[node name="movementOmniLight3D3" type="OmniLight3D" parent="Pai/Lights/Movement Lights" unique_id=1462877425]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -4, -4)
-light_energy = 0.208
-light_volumetric_fog_energy = 10.188
-omni_range = 1.0
-omni_attenuation = 5.0
-script = ExtResource("6_pkg7o")
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Pai/MovingWalls" unique_id=1581086077]
+transform = Transform3D(7, 0, 0, 0, 0.09899495, 1.4142135, 0, -0.09899495, 1.4142135, 20, 3, -5)
+mesh = SubResource("BoxMesh_dwbse")
+script = ExtResource("7_pkg7o")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pai/Lights/Movement Lights/movementOmniLight3D3" unique_id=1755002388]
-transform = Transform3D(-2.1855694e-08, 0, 0.3, 0, 0.5, 0, -0.5, 0, -1.3113417e-08, 0, 0, 0)
-mesh = SubResource("PrismMesh_pkg7o")
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Pai/MovingWalls" unique_id=821650082]
+transform = Transform3D(7, 0, 0, 0, 0.09899495, -1.4142135, 0, 0.09899495, 1.4142135, 20, -3, -5)
+mesh = SubResource("BoxMesh_dwbse")
+script = ExtResource("7_pkg7o")
 
-[node name="movementOmniLight3D4" type="OmniLight3D" parent="Pai/Lights/Movement Lights" unique_id=61115250]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -4, 4)
-light_energy = 0.208
-light_volumetric_fog_energy = 10.188
-omni_range = 1.0
-omni_attenuation = 5.0
-script = ExtResource("6_pkg7o")
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Pai/MovingWalls" unique_id=866523167]
+transform = Transform3D(7, 0, 0, 0, 0.09899495, 1.4142135, 0, -0.09899495, 1.4142135, 20, -3, 5)
+mesh = SubResource("BoxMesh_dwbse")
+script = ExtResource("7_pkg7o")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pai/Lights/Movement Lights/movementOmniLight3D4" unique_id=731015201]
-transform = Transform3D(-2.1855694e-08, 0, 0.3, 0, 0.5, 0, -0.5, 0, -1.3113417e-08, 0, 0, 0)
-mesh = SubResource("PrismMesh_pkg7o")
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Pai/MovingWalls" unique_id=1537471177]
+transform = Transform3D(7, 0, 0, 0, 0.09899495, -1.4142135, 0, 0.09899495, 1.4142135, 20, 3, 5)
+mesh = SubResource("BoxMesh_dwbse")
+script = ExtResource("7_pkg7o")
 
-[node name="movementOmniLight3D9" type="OmniLight3D" parent="Pai/Lights/Movement Lights" unique_id=585647940]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 4)
-light_energy = 0.208
-light_volumetric_fog_energy = 10.188
-omni_range = 1.0
-omni_attenuation = 5.0
-script = ExtResource("6_pkg7o")
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Pai/MovingWalls" unique_id=1909683835]
+transform = Transform3D(7, 0, 0, 0, 0.09899495, 1.4142135, 0, -0.09899495, 1.4142135, 40, 3, -5)
+mesh = SubResource("BoxMesh_dwbse")
+script = ExtResource("7_pkg7o")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pai/Lights/Movement Lights/movementOmniLight3D9" unique_id=1459199923]
-transform = Transform3D(-2.1855694e-08, 0, 0.3, 0, 0.5, 0, -0.5, 0, -1.3113417e-08, 0, 0, 0)
-mesh = SubResource("PrismMesh_pkg7o")
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Pai/MovingWalls" unique_id=1401748794]
+transform = Transform3D(7, 0, 0, 0, 0.09899495, -1.4142135, 0, 0.09899495, 1.4142135, 40, -3, -5)
+mesh = SubResource("BoxMesh_dwbse")
+script = ExtResource("7_pkg7o")
 
-[node name="movementOmniLight3D10" type="OmniLight3D" parent="Pai/Lights/Movement Lights" unique_id=1040766996]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -4)
-light_energy = 0.208
-light_volumetric_fog_energy = 10.188
-omni_range = 1.0
-omni_attenuation = 5.0
-script = ExtResource("6_pkg7o")
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="Pai/MovingWalls" unique_id=1648587394]
+transform = Transform3D(7, 0, 0, 0, 0.09899495, 1.4142135, 0, -0.09899495, 1.4142135, 40, -3, 5)
+mesh = SubResource("BoxMesh_dwbse")
+script = ExtResource("7_pkg7o")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pai/Lights/Movement Lights/movementOmniLight3D10" unique_id=876686756]
-transform = Transform3D(-2.1855694e-08, 0, 0.3, 0, 0.5, 0, -0.5, 0, -1.3113417e-08, 0, 0, 0)
-mesh = SubResource("PrismMesh_pkg7o")
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="Pai/MovingWalls" unique_id=826224909]
+transform = Transform3D(7, 0, 0, 0, 0.09899495, -1.4142135, 0, 0.09899495, 1.4142135, 40, 3, 5)
+mesh = SubResource("BoxMesh_dwbse")
+script = ExtResource("7_pkg7o")
 
-[node name="movementOmniLight3D11" type="OmniLight3D" parent="Pai/Lights/Movement Lights" unique_id=2144419255]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, -4)
-light_energy = 0.208
-light_volumetric_fog_energy = 10.188
-omni_range = 1.0
-omni_attenuation = 5.0
-script = ExtResource("6_pkg7o")
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="Pai/MovingWalls" unique_id=1232298448]
+transform = Transform3D(7, 0, 0, 0, 0.09899495, 1.4142135, 0, -0.09899495, 1.4142135, 60, 3, -5)
+mesh = SubResource("BoxMesh_dwbse")
+script = ExtResource("7_pkg7o")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pai/Lights/Movement Lights/movementOmniLight3D11" unique_id=1962506870]
-transform = Transform3D(-2.1855694e-08, 0, 0.3, 0, 0.5, 0, -0.5, 0, -1.3113417e-08, 0, 0, 0)
-mesh = SubResource("PrismMesh_pkg7o")
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="Pai/MovingWalls" unique_id=1600809191]
+transform = Transform3D(7, 0, 0, 0, 0.09899495, -1.4142135, 0, 0.09899495, 1.4142135, 60, -3, -5)
+mesh = SubResource("BoxMesh_dwbse")
+script = ExtResource("7_pkg7o")
 
-[node name="movementOmniLight3D12" type="OmniLight3D" parent="Pai/Lights/Movement Lights" unique_id=939229599]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 4)
-light_energy = 0.208
-light_volumetric_fog_energy = 10.188
-omni_range = 1.0
-omni_attenuation = 5.0
-script = ExtResource("6_pkg7o")
+[node name="MeshInstance3D15" type="MeshInstance3D" parent="Pai/MovingWalls" unique_id=720654181]
+transform = Transform3D(7, 0, 0, 0, 0.09899495, 1.4142135, 0, -0.09899495, 1.4142135, 60, -3, 5)
+mesh = SubResource("BoxMesh_dwbse")
+script = ExtResource("7_pkg7o")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pai/Lights/Movement Lights/movementOmniLight3D12" unique_id=147062049]
-transform = Transform3D(-2.1855694e-08, 0, 0.3, 0, 0.5, 0, -0.5, 0, -1.3113417e-08, 0, 0, 0)
-mesh = SubResource("PrismMesh_pkg7o")
+[node name="MeshInstance3D16" type="MeshInstance3D" parent="Pai/MovingWalls" unique_id=2132262477]
+transform = Transform3D(7, 0, 0, 0, 0.09899495, -1.4142135, 0, 0.09899495, 1.4142135, 60, 3, 5)
+mesh = SubResource("BoxMesh_dwbse")
+script = ExtResource("7_pkg7o")
 
-[node name="movementOmniLight3D13" type="OmniLight3D" parent="Pai/Lights/Movement Lights" unique_id=1544179161]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 4, 4)
-light_energy = 0.208
-light_volumetric_fog_energy = 10.188
-omni_range = 1.0
-omni_attenuation = 5.0
-script = ExtResource("6_pkg7o")
+[node name="MeshInstance3D17" type="MeshInstance3D" parent="Pai/MovingWalls" unique_id=2039615552]
+transform = Transform3D(7, 0, 0, 0, 0.09899495, 1.4142135, 0, -0.09899495, 1.4142135, 80, 3, -5)
+mesh = SubResource("BoxMesh_dwbse")
+script = ExtResource("7_pkg7o")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pai/Lights/Movement Lights/movementOmniLight3D13" unique_id=700464841]
-transform = Transform3D(-2.1855694e-08, 0, 0.3, 0, 0.5, 0, -0.5, 0, -1.3113417e-08, 0, 0, 0)
-mesh = SubResource("PrismMesh_pkg7o")
+[node name="MeshInstance3D18" type="MeshInstance3D" parent="Pai/MovingWalls" unique_id=597366281]
+transform = Transform3D(7, 0, 0, 0, 0.09899495, -1.4142135, 0, 0.09899495, 1.4142135, 80, -3, -5)
+mesh = SubResource("BoxMesh_dwbse")
+script = ExtResource("7_pkg7o")
 
-[node name="movementOmniLight3D14" type="OmniLight3D" parent="Pai/Lights/Movement Lights" unique_id=772305248]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 4, -4)
-light_energy = 0.208
-light_volumetric_fog_energy = 10.188
-omni_range = 1.0
-omni_attenuation = 5.0
-script = ExtResource("6_pkg7o")
+[node name="MeshInstance3D19" type="MeshInstance3D" parent="Pai/MovingWalls" unique_id=146055606]
+transform = Transform3D(7, 0, 0, 0, 0.09899495, 1.4142135, 0, -0.09899495, 1.4142135, 80, -3, 5)
+mesh = SubResource("BoxMesh_dwbse")
+script = ExtResource("7_pkg7o")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pai/Lights/Movement Lights/movementOmniLight3D14" unique_id=932089174]
-transform = Transform3D(-2.1855694e-08, 0, 0.3, 0, 0.5, 0, -0.5, 0, -1.3113417e-08, 0, 0, 0)
-mesh = SubResource("PrismMesh_pkg7o")
+[node name="MeshInstance3D20" type="MeshInstance3D" parent="Pai/MovingWalls" unique_id=1255236049]
+transform = Transform3D(7, 0, 0, 0, 0.09899495, -1.4142135, 0, 0.09899495, 1.4142135, 80, 3, 5)
+mesh = SubResource("BoxMesh_dwbse")
+script = ExtResource("7_pkg7o")
 
-[node name="movementOmniLight3D15" type="OmniLight3D" parent="Pai/Lights/Movement Lights" unique_id=37618957]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, -4, -4)
-light_energy = 0.208
-light_volumetric_fog_energy = 10.188
-omni_range = 1.0
-omni_attenuation = 5.0
-script = ExtResource("6_pkg7o")
+[node name="MeshInstance3D21" type="MeshInstance3D" parent="Pai/MovingWalls" unique_id=99903473]
+transform = Transform3D(7, 0, 0, 0, 0.09899495, 1.4142135, 0, -0.09899495, 1.4142135, 100, 3, -5)
+mesh = SubResource("BoxMesh_dwbse")
+script = ExtResource("7_pkg7o")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pai/Lights/Movement Lights/movementOmniLight3D15" unique_id=605099119]
-transform = Transform3D(-2.1855694e-08, 0, 0.3, 0, 0.5, 0, -0.5, 0, -1.3113417e-08, 0, 0, 0)
-mesh = SubResource("PrismMesh_pkg7o")
+[node name="MeshInstance3D22" type="MeshInstance3D" parent="Pai/MovingWalls" unique_id=156416701]
+transform = Transform3D(7, 0, 0, 0, 0.09899495, -1.4142135, 0, 0.09899495, 1.4142135, 100, -3, -5)
+mesh = SubResource("BoxMesh_dwbse")
+script = ExtResource("7_pkg7o")
 
-[node name="movementOmniLight3D16" type="OmniLight3D" parent="Pai/Lights/Movement Lights" unique_id=759621926]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, -4, 4)
-light_energy = 0.208
-light_volumetric_fog_energy = 10.188
-omni_range = 1.0
-omni_attenuation = 5.0
-script = ExtResource("6_pkg7o")
+[node name="MeshInstance3D23" type="MeshInstance3D" parent="Pai/MovingWalls" unique_id=2051225908]
+transform = Transform3D(7, 0, 0, 0, 0.09899495, 1.4142135, 0, -0.09899495, 1.4142135, 100, -3, 5)
+mesh = SubResource("BoxMesh_dwbse")
+script = ExtResource("7_pkg7o")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pai/Lights/Movement Lights/movementOmniLight3D16" unique_id=1001810398]
-transform = Transform3D(-2.1855694e-08, 0, 0.3, 0, 0.5, 0, -0.5, 0, -1.3113417e-08, 0, 0, 0)
-mesh = SubResource("PrismMesh_pkg7o")
-
-[node name="movementOmniLight3D5" type="OmniLight3D" parent="Pai/Lights/Movement Lights" unique_id=44506715]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 4, 4)
-light_energy = 0.208
-light_volumetric_fog_energy = 10.188
-omni_range = 1.0
-omni_attenuation = 5.0
-script = ExtResource("6_pkg7o")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pai/Lights/Movement Lights/movementOmniLight3D5" unique_id=1435383823]
-transform = Transform3D(-2.1855694e-08, 0, 0.3, 0, 0.5, 0, -0.5, 0, -1.3113417e-08, 0, 0, 0)
-mesh = SubResource("PrismMesh_pkg7o")
-
-[node name="movementOmniLight3D6" type="OmniLight3D" parent="Pai/Lights/Movement Lights" unique_id=79971131]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 4, -4)
-light_energy = 0.208
-light_volumetric_fog_energy = 10.188
-omni_range = 1.0
-omni_attenuation = 5.0
-script = ExtResource("6_pkg7o")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pai/Lights/Movement Lights/movementOmniLight3D6" unique_id=1138421656]
-transform = Transform3D(-2.1855694e-08, 0, 0.3, 0, 0.5, 0, -0.5, 0, -1.3113417e-08, 0, 0, 0)
-mesh = SubResource("PrismMesh_pkg7o")
-
-[node name="movementOmniLight3D7" type="OmniLight3D" parent="Pai/Lights/Movement Lights" unique_id=1244178076]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, -4, -4)
-light_energy = 0.208
-light_volumetric_fog_energy = 10.188
-omni_range = 1.0
-omni_attenuation = 5.0
-script = ExtResource("6_pkg7o")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pai/Lights/Movement Lights/movementOmniLight3D7" unique_id=1494308257]
-transform = Transform3D(-2.1855694e-08, 0, 0.3, 0, 0.5, 0, -0.5, 0, -1.3113417e-08, 0, 0, 0)
-mesh = SubResource("PrismMesh_pkg7o")
-
-[node name="movementOmniLight3D8" type="OmniLight3D" parent="Pai/Lights/Movement Lights" unique_id=2092640357]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, -4, 4)
-light_energy = 0.208
-light_volumetric_fog_energy = 10.188
-omni_range = 1.0
-omni_attenuation = 5.0
-script = ExtResource("6_pkg7o")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pai/Lights/Movement Lights/movementOmniLight3D8" unique_id=10801317]
-transform = Transform3D(-2.1855694e-08, 0, 0.3, 0, 0.5, 0, -0.5, 0, -1.3113417e-08, 0, 0, 0)
-mesh = SubResource("PrismMesh_pkg7o")
+[node name="MeshInstance3D24" type="MeshInstance3D" parent="Pai/MovingWalls" unique_id=1808193350]
+transform = Transform3D(7, 0, 0, 0, 0.09899495, -1.4142135, 0, 0.09899495, 1.4142135, 100, 3, 5)
+mesh = SubResource("BoxMesh_dwbse")
+script = ExtResource("7_pkg7o")
 
 [node name="Walls" type="Node3D" parent="." unique_id=229416377]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 2)

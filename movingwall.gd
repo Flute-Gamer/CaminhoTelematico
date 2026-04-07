@@ -1,31 +1,56 @@
 extends MeshInstance3D
-var speed = 0.02
-var record_live_index: int
-var volume_samples: Array = []
+
+#variaveis pra andar
 const MAX_SAMPLES: int = 10
+var grandParent
+@export var speed = 0.5
+var volume_samples: Array = []
+var initialX = 100
+@export var rotationspeed = 2
+
+#variaveis pra luz
+var record_live_index: int
+var record_bus_index
+var spectrum
+@export var minFreq = 20.0
+@export var maxFreq = 5000.0
+var bands = 7
+var factor
+var magnitude = []
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#ready para andar
+	grandParent = get_parent().get_parent().get_parent()
+	visible = false
+	
 	record_live_index = AudioServer.get_bus_index('Record')
-	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
+	if position.x < -20:
+		position.x = initialX
+		
+	if position.x > 85:
+		visible = false
+	else:
+		visible = true
+	
 	var sample = db_to_linear(AudioServer.get_bus_peak_volume_left_db(record_live_index, 0))
 	volume_samples.push_front(sample)
 	if volume_samples.size() > MAX_SAMPLES:
 		volume_samples.pop_back()
 	var sample_avg = average_array(volume_samples)
-	
-	speed = sample_avg * 10
 	if speed < 0.1:
+		rotationspeed += 0.1
 		speed = 0.1
-	scale = Vector3(speed*0.2, speed*0.2, speed*0.2)
-	if scale < Vector3(0.15, 0.15, 0.15):
-		scale = Vector3(0.15, 0.15, 0.15)
-	rotation.y += speed * delta
-	pass
-
+	else:
+		speed = sample_avg * 20
+		rotationspeed = sample_avg * 10
+	position.x += -speed * delta
+	
+	
 func maxIndex(arr):
 	var maxindex = 0
 	for i in range (1, arr.size()):

@@ -5,7 +5,7 @@ var record_live_index: int
 var record_bus_index
 var spectrum
 var minFreq = 20.0
-var maxFreq = 3000.0
+var maxFreq = 5000.0
 var bands = 7
 var factor
 var magnitude = []
@@ -22,7 +22,7 @@ func _ready() -> void:
 	color()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
+func _process(_elta: float) -> void:
 	pass
 	
 	##print(magnitude)

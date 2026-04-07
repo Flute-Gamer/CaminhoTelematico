@@ -42,9 +42,9 @@ func _process(delta: float) -> void:
 		volume_samples.pop_back()
 	var sample_avg = average_array(volume_samples)
 
-	speed = sample_avg * 3
-	if speed < 0.025:
-		speed = 0.025
+	speed = sample_avg * 10
+	if speed < 0.1:
+		speed = 0.1
 	
 	angle += speed * delta
 	var new_y = -cos(angle) * radius
