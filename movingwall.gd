@@ -3,10 +3,13 @@ extends MeshInstance3D
 #variaveis pra andar
 const MAX_SAMPLES: int = 10
 var grandParent
-@export var speed = 0.5
+var speed = 0.5
 var volume_samples: Array = []
 var initialX = 100
-@export var rotationspeed = 2
+var speedArray: Array = []
+var index: int = 0
+var momentspeed: float
+const array_size = 1500
 
 #variaveis pra luz
 var record_live_index: int
@@ -25,6 +28,10 @@ func _ready() -> void:
 	visible = false
 	
 	record_live_index = AudioServer.get_bus_index('Record')
+	
+	speedArray.resize(array_size)
+	for i in range(speedArray.size()):
+		speedArray[i] = 0.1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -41,15 +48,26 @@ func _process(delta: float) -> void:
 	volume_samples.push_front(sample)
 	if volume_samples.size() > MAX_SAMPLES:
 		volume_samples.pop_back()
+		
 	var sample_avg = average_array(volume_samples)
+	
+	momentspeed = sample_avg * 10
+	controlSpeed(momentspeed)
+	speed = average_array(speedArray)
+	
 	if speed < 0.1:
-		rotationspeed += 0.1
 		speed = 0.1
-	else:
-		speed = sample_avg * 20
-		rotationspeed = sample_avg * 10
+		
 	position.x += -speed * delta
 	
+func controlSpeed(momspeed: float):
+	if (index < array_size):
+		pass
+	else:
+		index = 0
+	speedArray[index] = momspeed
+	index = index + 1
+	return
 	
 func maxIndex(arr):
 	var maxindex = 0

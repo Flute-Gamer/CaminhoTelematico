@@ -5,8 +5,12 @@ const MAX_SAMPLES: int = 10
 var grandParent
 var angle
 var radius
-@export var speed = 0.01
+var speed = 0.01
 var volume_samples: Array = []
+var speedArray: Array = []
+var index: int = 0
+var momentspeed: float
+const array_size = 1500
 
 #variaveis pra luz
 var record_live_index: int
@@ -26,6 +30,10 @@ func _ready() -> void:
 	radius = offset.length()
 	angle = atan2(offset.y, offset.z)
 	
+	speedArray.resize(array_size)
+	for i in range(speedArray.size()):
+		speedArray[i] = 0.1
+	
 	#ready para luz
 	randomize()
 	magnitude.resize(bands)
@@ -42,9 +50,11 @@ func _process(delta: float) -> void:
 		volume_samples.pop_back()
 	var sample_avg = average_array(volume_samples)
 
-	speed = sample_avg * 10
-	if speed < 0.1:
-		speed = 0.1
+	momentspeed = sample_avg * 10
+	controlSpeed(momentspeed)
+	speed = average_array(speedArray)
+	if speed < 0.05:
+		speed = 0.05
 	
 	angle += speed * delta
 	var new_y = -cos(angle) * radius
@@ -79,6 +89,15 @@ func color():
 	await get_tree().create_timer(waitTime).timeout
 	color()
 	
+	return
+	
+func controlSpeed(momspeed: float):
+	if (index < array_size):
+		pass
+	else:
+		index = 0
+	speedArray[index] = momspeed
+	index = index + 1
 	return
 	
 func maxIndex(arr):
