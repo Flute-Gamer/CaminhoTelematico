@@ -28,7 +28,7 @@ func _ready() -> void:
 	grandParent = get_parent().get_parent()
 	var offset = global_position - grandParent.global_position
 	radius = offset.length()
-	angle = atan2(offset.y, offset.z)
+	angle = atan2(offset.y, offset.x)
 	
 	speedArray.resize(array_size)
 	for i in range(speedArray.size()):
