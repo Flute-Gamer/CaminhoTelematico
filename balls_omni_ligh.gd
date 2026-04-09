@@ -6,6 +6,7 @@ var grandParent
 var angle
 var radius
 var speed = 0.01
+var globalZ = 0
 var volume_samples: Array = []
 var speedArray: Array = []
 var index: int = 0
@@ -28,7 +29,12 @@ func _ready() -> void:
 	grandParent = get_parent().get_parent()
 	var offset = global_position - grandParent.global_position
 	radius = offset.length()
-	angle = atan2(offset.y, offset.x)
+	
+	if global_position.z == 0:
+		angle = atan2(offset.y, offset.x)
+	else:
+		globalZ = 1
+		angle = atan2(offset.y, offset.z)
 	
 	speedArray.resize(array_size)
 	for i in range(speedArray.size()):
@@ -57,9 +63,15 @@ func _process(delta: float) -> void:
 		speed = 0.05
 	
 	angle += speed * delta
-	var new_x = -cos(angle) * radius
-	var new_y = sin(angle) * radius
-	global_position = grandParent.global_position + Vector3(new_x, new_y, 0)
+	
+	if globalZ == 0:
+		var new_x = -cos(angle) * radius
+		var new_y = sin(angle) * radius
+		global_position = grandParent.global_position + Vector3(new_x, new_y, 0)
+	else:
+		var new_y = -cos(angle) * radius
+		var new_z = sin(angle) * radius
+		global_position = grandParent.global_position + Vector3(0, new_y, new_z)
 	
 	##print(magnitude)
 	##var energy = magnitude.length()

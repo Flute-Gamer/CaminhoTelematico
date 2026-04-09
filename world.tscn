@@ -3,9 +3,8 @@
 [ext_resource type="Script" uid="uid://cmphounixw61e" path="res://pai.gd" id="1_aqk2v"]
 [ext_resource type="Script" uid="uid://b5qi8f3ltwyhx" path="res://cube.gd" id="2_pkg7o"]
 [ext_resource type="Script" uid="uid://ceqmaxgmiwjix" path="res://camera.gd" id="2_tlwt5"]
-[ext_resource type="Script" uid="uid://bw1q05dipakgt" path="res://z_omni_light_3d.gd" id="4_036b0"]
 [ext_resource type="Script" uid="uid://bchdynwm7obo0" path="res://cameralight.gd" id="4_dwbse"]
-[ext_resource type="Script" uid="uid://xe2c6h7tj76v" path="res://y_omni_light_3d.gd" id="5_dwbse"]
+[ext_resource type="Script" uid="uid://b34lpb2r87l11" path="res://balls_omni_ligh.gd" id="5_dwbse"]
 [ext_resource type="Script" uid="uid://bqqfpl8dhysfe" path="res://movingwall.gd" id="7_pkg7o"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pkg7o"]
@@ -51,7 +50,7 @@ script = ExtResource("4_dwbse")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2)
 light_energy = 3.0
 omni_range = 300.0
-script = ExtResource("4_036b0")
+script = ExtResource("5_dwbse")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Pai/Lights/ZOmniLight3D0" unique_id=573807403]
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
@@ -61,7 +60,7 @@ mesh = SubResource("SphereMesh_036b0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 2)
 light_energy = 3.0
 omni_range = 300.0
-script = ExtResource("4_036b0")
+script = ExtResource("5_dwbse")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Pai/Lights/ZOmniLight3D1" unique_id=1977356125]
 transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, 0, 0, 0)
@@ -71,7 +70,7 @@ mesh = SubResource("SphereMesh_036b0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2)
 light_energy = 3.0
 omni_range = 300.0
-script = ExtResource("4_036b0")
+script = ExtResource("5_dwbse")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Pai/Lights/ZOmniLight3D2" unique_id=1334879155]
 transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, 0, 0, 0)
@@ -81,14 +80,14 @@ mesh = SubResource("SphereMesh_036b0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -2)
 light_energy = 3.0
 omni_range = 300.0
-script = ExtResource("4_036b0")
+script = ExtResource("5_dwbse")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Pai/Lights/ZOmniLight3D4" unique_id=1729437915]
 transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, 0, 0, 0)
 mesh = SubResource("SphereMesh_036b0")
 
 [node name="YOmniLight3D0" type="OmniLight3D" parent="Pai/Lights" unique_id=2066287689]
-transform = Transform3D(0.0008551636, 0, 0.99999964, 0, 1, 0, -0.99999964, 0, 0.0008551636, 1.9999993, 2, 0.0017103272)
+transform = Transform3D(0.0008551636, 0, 0.99999964, 0, 1, 0, -0.99999964, 0, 0.0008551636, 2, 2, 0)
 light_energy = 3.0
 omni_range = 300.0
 script = ExtResource("5_dwbse")
@@ -98,7 +97,7 @@ transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, 0, 0, 0)
 mesh = SubResource("SphereMesh_036b0")
 
 [node name="YOmniLight3D1" type="OmniLight3D" parent="Pai/Lights" unique_id=421269765]
-transform = Transform3D(0.0008551636, 0, 0.99999964, 0, 1, 0, -0.99999964, 0, 0.0008551636, 1.9999993, -2, 0.0017103272)
+transform = Transform3D(0.0008551636, 0, 0.99999964, 0, 1, 0, -0.99999964, 0, 0.0008551636, 2, -2, 0)
 light_energy = 3.0
 omni_range = 300.0
 script = ExtResource("5_dwbse")
@@ -108,7 +107,7 @@ transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, 0, 0, 0)
 mesh = SubResource("SphereMesh_036b0")
 
 [node name="YOmniLight3D2" type="OmniLight3D" parent="Pai/Lights" unique_id=448663431]
-transform = Transform3D(0.0008551636, 0, 0.99999964, 0, 1, 0, -0.99999964, 0, 0.0008551636, -1.9999993, 2, -0.0017103272)
+transform = Transform3D(0.0008551636, 0, 0.99999964, 0, 1, 0, -0.99999964, 0, 0.0008551636, -2, 2, 0)
 light_energy = 3.0
 omni_range = 300.0
 script = ExtResource("5_dwbse")
@@ -118,7 +117,7 @@ transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, 0, 0, 0)
 mesh = SubResource("SphereMesh_036b0")
 
 [node name="YOmniLight3D4" type="OmniLight3D" parent="Pai/Lights" unique_id=1931956043]
-transform = Transform3D(0.0008551636, 0, 0.99999964, 0, 1, 0, -0.99999964, 0, 0.0008551636, -1.9999993, -2, -0.0017103272)
+transform = Transform3D(0.0008551636, 0, 0.99999964, 0, 1, 0, -0.99999964, 0, 0.0008551636, -2, -2, 0)
 light_energy = 3.0
 omni_range = 300.0
 script = ExtResource("5_dwbse")
@@ -264,7 +263,7 @@ mesh = SubResource("BoxMesh_gv5m4")
 surface_material_override/0 = SubResource("StandardMaterial3D_f3sb7")
 
 [node name="Wall2" type="MeshInstance3D" parent="Walls" unique_id=1442061384]
-transform = Transform3D(250.658, 0, 0, 0, -1.8387633e-06, -1.226, 0, 42.066, -5.359016e-08, 103.28485, 19.119629, -1.6677399)
+transform = Transform3D(250.658, 0, 0, 0, -1.8387633e-06, -1.226, 0, 42.066, -5.359016e-08, 103.4994, 19.119621, -1.1778564)
 mesh = SubResource("BoxMesh_gv5m4")
 surface_material_override/0 = SubResource("StandardMaterial3D_f3sb7")
 
