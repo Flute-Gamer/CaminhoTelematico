@@ -8,14 +8,12 @@ var momentspeed: float
 const array_size = 1500
 const MAX_SAMPLES: int = 10
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	record_live_index = AudioServer.get_bus_index('Record')
 	speedArray.resize(array_size)
 	for i in range(speedArray.size()):
 		speedArray[i] = 0.1
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	var sample = db_to_linear(AudioServer.get_bus_peak_volume_left_db(record_live_index, 0))
 	volume_samples.push_front(sample)

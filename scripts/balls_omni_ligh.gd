@@ -19,7 +19,6 @@ var bands = 7
 var factor
 var magnitude = []
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#ready para girar
 	grandParent = get_parent().get_parent()
@@ -40,7 +39,6 @@ func _ready() -> void:
 	factor = pow(maxFreq/minFreq, 1.0/bands)
 	color()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var sample = db_to_linear(AudioServer.get_bus_peak_volume_left_db(record_live_index, 0))
 	volume_samples.push_front(sample)
