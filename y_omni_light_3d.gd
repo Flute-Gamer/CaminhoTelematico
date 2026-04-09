@@ -69,18 +69,18 @@ func color():
 	for i in range(bands):
 		var aud = spectrum.get_magnitude_for_frequency_range(minFreq*pow(factor, i), minFreq*pow(factor, i+1))         
 		magnitude[i] = (aud.x + aud.y)/2
-	var index = maxIndex(magnitude)
-	if index == 0:
+	var index_color = maxIndex(magnitude)
+	if index_color == 0:
 		self.light_color = Color(1, 0, 0)
-	elif index == 1:
+	elif index_color == 1:
 		self.light_color = Color(1, 0.5, 0) 
-	elif index == 2:
+	elif index_color == 2:
 		self.light_color = Color(1, 1, 0)
-	elif index == 3:
+	elif index_color == 3:
 		self.light_color = Color(0, 1, 0)
-	elif index == 4:
+	elif index_color == 4:
 		self.light_color = Color(0.0, 0.7,1)
-	elif index == 5:
+	elif index_color == 5:
 		self.light_color = Color(0, 0, 1)
 	else:
 		self.light_color = Color(0.56, 0, 1)
