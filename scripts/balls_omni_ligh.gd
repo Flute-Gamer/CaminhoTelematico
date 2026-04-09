@@ -40,17 +40,9 @@ func _ready() -> void:
 	color()
 
 func _process(delta: float) -> void:
-	var sample = db_to_linear(AudioServer.get_bus_peak_volume_left_db(record_live_index, 0))
-	volume_samples.push_front(sample)
-	if volume_samples.size() > MAX_SAMPLES:
-		volume_samples.pop_back()
-	var sample_avg = average_array(volume_samples)
-
-	speed = grandParent.speed
-	
+	speed = grandParent.speed	
 	if speed < 0.05:
 		speed = 0.05
-	
 	angle += speed * delta
 	
 	if globalZ == 0:
