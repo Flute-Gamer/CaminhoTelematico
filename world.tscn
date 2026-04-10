@@ -2,8 +2,11 @@
 
 [ext_resource type="Script" uid="uid://cmphounixw61e" path="res://scripts/pai.gd" id="1_aqk2v"]
 [ext_resource type="Script" uid="uid://b5qi8f3ltwyhx" path="res://scripts/cube.gd" id="2_pkg7o"]
+[ext_resource type="Script" uid="uid://w8v0v76wc4r2" path="res://addons/godOSC/scripts/OSCServer.gd" id="3_pkg7o"]
 [ext_resource type="Script" uid="uid://bchdynwm7obo0" path="res://scripts/cameralight.gd" id="4_dwbse"]
+[ext_resource type="Script" uid="uid://bekpqrke5dy3j" path="res://oscreceivermine.gd" id="4_gbfbk"]
 [ext_resource type="Script" uid="uid://b34lpb2r87l11" path="res://scripts/balls_omni_ligh.gd" id="5_dwbse"]
+[ext_resource type="Script" uid="uid://xi7uy8bnjk3a" path="res://addons/godOSC/scripts/OSCClient.gd" id="6_dwbse"]
 [ext_resource type="Script" uid="uid://bqqfpl8dhysfe" path="res://scripts/movingwall.gd" id="7_pkg7o"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pkg7o"]
@@ -39,8 +42,20 @@ albedo_color = Color(0, 0, 0, 1)
 
 [node name="World" type="Node3D" unique_id=987463657]
 
+[node name="OSCClient" type="Node" parent="." unique_id=758110633]
+script = ExtResource("6_dwbse")
+
+[node name="OSCServer" type="Node" parent="." unique_id=447092589]
+script = ExtResource("3_pkg7o")
+timecode_as_unix = true
+
 [node name="Pai" type="Node3D" parent="." unique_id=1196302755]
 script = ExtResource("1_aqk2v")
+
+[node name="OSCReceiver" type="Node" parent="Pai" unique_id=1809085192 node_paths=PackedStringArray("target_server")]
+script = ExtResource("4_gbfbk")
+target_server = NodePath("../../OSCServer")
+osc_address = "/valor"
 
 [node name="Cube" type="MeshInstance3D" parent="Pai" unique_id=1486488004]
 mesh = SubResource("BoxMesh_gv5m4")
