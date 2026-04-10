@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 	else:
 		visible = true
 	
-	speed = grandParent.speed * 4
+	speed = grandParent.speed * 6
 	
 	if speed < 0.1:
 		speed = 0.1

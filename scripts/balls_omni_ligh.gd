@@ -9,16 +9,6 @@ var speed = 0.01
 var globalZ = 0
 var volume_samples: Array = []
 
-#variaveis pra luz
-var record_live_index: int
-var record_bus_index
-var spectrum
-@export var minFreq = 20.0
-@export var maxFreq = 5000.0
-var bands = 7
-var factor
-var magnitude = []
-
 func _ready() -> void:
 	#ready para girar
 	grandParent = get_parent().get_parent()
@@ -33,10 +23,6 @@ func _ready() -> void:
 	
 	#ready para luz
 	randomize()
-	magnitude.resize(bands)
-	record_live_index = AudioServer.get_bus_index('Record')
-	spectrum = AudioServer.get_bus_effect_instance(record_live_index, 1)
-	factor = pow(maxFreq/minFreq, 1.0/bands)
 	color()
 
 func _process(delta: float) -> void:
@@ -55,10 +41,7 @@ func _process(delta: float) -> void:
 		global_position = grandParent.global_position + Vector3(0, new_y, new_z)
 	
 func color():
-	for i in range(bands):
-		var aud = spectrum.get_magnitude_for_frequency_range(minFreq*pow(factor, i), minFreq*pow(factor, i+1))         
-		magnitude[i] = (aud.x + aud.y)/2
-	var index_color = maxIndex(magnitude)
+	var index_color = grandParent.indexColor()
 	if index_color == 0:
 		self.light_color = Color(1, 0, 0)
 	elif index_color == 1:
@@ -78,19 +61,4 @@ func color():
 	await get_tree().create_timer(waitTime).timeout
 	color()
 	
-	return
-	
-func maxIndex(arr):
-	var maxindex = 0
-	for i in range (1, arr.size()):
-		if arr[i] > arr[maxindex]:
-			maxindex = i
-	return maxindex
-	
-	
-func average_array(arr: Array) -> float:
-	var avg = 0.0
-	for i in range(arr.size()):
-		avg += arr[i]
-	avg /= arr.size()
-	return avg
+	return	
