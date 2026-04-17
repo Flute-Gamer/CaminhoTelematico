@@ -57,7 +57,7 @@ func color():
 	else:
 		self.light_color = Color(0.56, 0, 1)
 		
-	var waitTime = randf_range(0.5, 5.0)
+	var waitTime = randf_range(0.5, 8.0)
 	await get_tree().create_timer(waitTime).timeout
 	color()
 	
