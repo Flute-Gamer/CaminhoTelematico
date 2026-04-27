@@ -7,7 +7,6 @@ func _ready() -> void:
 	Parent = get_parent()
 
 func _process(delta: float) -> void:
-	
 	self.visible = isVisible
 	if Input.is_action_just_pressed("RevealCube"):
 		isVisible = !isVisible

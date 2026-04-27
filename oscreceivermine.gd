@@ -1,6 +1,6 @@
 extends OSCReceiver
 
-func _process(delta):
+func _process(_delta):
 	if target_server.incoming_messages.has(osc_address):
 		var msg = target_server.incoming_messages[osc_address]
 

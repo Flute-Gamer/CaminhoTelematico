@@ -6,8 +6,9 @@ var volume_samples: Array = []
 var speedArray: Array = []
 var index: int = 0
 var momentspeed: float
-const array_size = 1500
+const array_size = 1000
 const MAX_SAMPLES: int = 10
+var stopped = false
 
 #colors
 var bands = 7
@@ -29,12 +30,19 @@ func _ready() -> void:
 	factor = pow(maxFreq/minFreq, 1.0/bands)
 
 func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("Stop"):
+		stopped = true
 	var sample = db_to_linear(AudioServer.get_bus_peak_volume_left_db(record_live_index, 0))
 	volume_samples.push_front(sample)
 	if volume_samples.size() > MAX_SAMPLES:
 		volume_samples.pop_back()
 	var sample_avg = average_array(volume_samples)
-	
+	if stopped:
+		if sample_avg < 0.1:
+			for i in range(speedArray.size()):
+				speedArray[i] *= 0.99
+			speed = average_array(speedArray)
+		return
 	momentspeed = sample_avg * 10
 	controlSpeed(momentspeed)
 	speed = average_array(speedArray)
