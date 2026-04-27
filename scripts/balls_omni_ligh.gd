@@ -8,6 +8,7 @@ var radius
 var speed = 0.01
 var globalZ = 0
 var volume_samples: Array = []
+var isVisible = true
 
 func _ready() -> void:
 	#ready para girar
@@ -30,6 +31,10 @@ func _process(delta: float) -> void:
 	if speed < 0.05:
 		speed = 0.05
 	angle += speed * delta
+	
+	self.visible = isVisible
+	if Input.is_action_just_pressed("RevealBalls"):
+		isVisible = !isVisible
 	
 	if globalZ == 0:
 		var new_x = -cos(angle) * radius
