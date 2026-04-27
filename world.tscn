@@ -9,10 +9,11 @@
 [ext_resource type="Script" uid="uid://xi7uy8bnjk3a" path="res://addons/godOSC/scripts/OSCClient.gd" id="6_dwbse"]
 [ext_resource type="Script" uid="uid://bqqfpl8dhysfe" path="res://scripts/movingwall.gd" id="7_pkg7o"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pkg7o"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gbfbk"]
+metallic = 0.95
+roughness = 0.38
 
-[sub_resource type="BoxMesh" id="BoxMesh_gv5m4"]
-material = SubResource("StandardMaterial3D_pkg7o")
+[sub_resource type="BoxMesh" id="BoxMesh_ioo17"]
 
 [sub_resource type="GDScript" id="GDScript_036b0"]
 script/source = "extends Camera3D
@@ -34,6 +35,21 @@ func _process(_delta: float) -> void:
 [sub_resource type="BoxMesh" id="BoxMesh_dwbse"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wse8f"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wse8f"]
+load_path = "res://.godot/imported/blue_metal_plate_diff_1k.png-dccf5950064c7d01d627b883959ab554.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ic0uy"]
+load_path = "res://.godot/imported/blue_metal_plate_nor_gl_1k.png-403a288e95644ef999016c032e8d9d11.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_70uel"]
+albedo_texture = SubResource("CompressedTexture2D_wse8f")
+normal_enabled = true
+normal_texture = SubResource("CompressedTexture2D_ic0uy")
+uv1_scale = Vector3(500, 500, 500)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gv5m4"]
+material = SubResource("StandardMaterial3D_70uel")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f3sb7"]
 albedo_color = Color(0, 0, 0, 1)
@@ -58,7 +74,8 @@ target_server = NodePath("../../OSCServer")
 osc_address = "/valor"
 
 [node name="Cube" type="MeshInstance3D" parent="Pai" unique_id=1486488004]
-mesh = SubResource("BoxMesh_gv5m4")
+material_override = SubResource("StandardMaterial3D_gbfbk")
+mesh = SubResource("BoxMesh_ioo17")
 script = ExtResource("2_pkg7o")
 
 [node name="Camera" type="Camera3D" parent="Pai" unique_id=299897857]
