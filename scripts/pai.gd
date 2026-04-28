@@ -16,7 +16,7 @@ var stopped = false
 #colors
 var bands = 7
 @export var minFreq = 20.0
-@export var maxFreq = 5000.0
+@export var maxFreq = 20000.0
 var factor
 var spectrum
 var magnitude = []
