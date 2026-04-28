@@ -21,7 +21,8 @@ var factor
 var spectrum
 var magnitude = []
 
-@onready var oscReceiver = $OSCReceiver
+@onready var oscReceiverPitch = $OSCReceiverPitch
+@onready var oscReceiverVolume = $OSCReceiverVolume
 
 func _ready() -> void:
 	speedArray.resize(array_size)
@@ -38,16 +39,16 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Stop"):
 		stopped = !stopped
+	var sample: float
 	if useLocalMicrophone:
-		var sample = db_to_linear(AudioServer.get_bus_peak_volume_left_db(record_live_index, 0))
+		sample = db_to_linear(AudioServer.get_bus_peak_volume_left_db(record_live_index, 0))
 		handleSpeed(sample)
 		return
-	var sample = oscReceiver.valor
+	sample = oscReceiverVolume.value
 	handleSpeed(sample)
 	
 func handleSpeed(sample: float):
 	volume_samples.push_front(sample)
-	print(volume_samples.size())
 	if volume_samples.size() > MAX_SAMPLES:
 		volume_samples.pop_back()
 	var sample_avg = average_array(volume_samples)
@@ -63,15 +64,6 @@ func handleSpeed(sample: float):
 	controlSpeed(momentspeed)
 	speed = average_array(speedArray)
 	
-func indexColor():
-	if useLocalMicrophone:
-		for i in range(bands):
-			if factor != null:
-				var aud = spectrum.get_magnitude_for_frequency_range(minFreq*pow(factor, i), minFreq*pow(factor, i+1))         
-				magnitude[i] = (aud.x + aud.y)/2
-		var index_color = maxIndex(magnitude)
-		return index_color
-	
 func controlSpeed(momspeed: float):
 	if (index < array_size):
 		pass
@@ -80,6 +72,26 @@ func controlSpeed(momspeed: float):
 	speedArray[index] = momspeed
 	index = index + 1
 	return	
+	
+func indexColor():
+	if useLocalMicrophone:
+		for i in range(bands):
+			if factor != null:
+				var aud = spectrum.get_magnitude_for_frequency_range(
+					minFreq*pow(factor, i), 
+					minFreq*pow(factor, i+1))
+				magnitude[i] = max(aud.x, aud.y)
+		var index_color = maxIndex(magnitude)	
+		return index_color
+	else:
+		if oscReceiverPitch == null:
+			return 0
+		var freq = oscReceiverPitch.value
+		for i in range(bands):
+			var low = minFreq * pow(factor, i)
+			var high = minFreq * pow(factor, i + 1)
+			if freq >= low and freq < high:
+				return i
 	
 func average_array(arr: Array) -> float:
 	var avg = 0.0

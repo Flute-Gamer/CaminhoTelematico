@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://w8v0v76wc4r2" path="res://addons/godOSC/scripts/OSCServer.gd" id="3_pkg7o"]
 [ext_resource type="Script" uid="uid://bchdynwm7obo0" path="res://scripts/cameralight.gd" id="4_dwbse"]
 [ext_resource type="Script" uid="uid://bekpqrke5dy3j" path="res://oscreceivermine.gd" id="4_gbfbk"]
+[ext_resource type="Script" uid="uid://b1pmuy5w5w4qi" path="res://osc_receiver_pitch.gd" id="4_ic0uy"]
 [ext_resource type="Script" uid="uid://b34lpb2r87l11" path="res://scripts/balls_omni_ligh.gd" id="5_dwbse"]
 [ext_resource type="Script" uid="uid://xi7uy8bnjk3a" path="res://addons/godOSC/scripts/OSCClient.gd" id="6_dwbse"]
 [ext_resource type="Script" uid="uid://bqqfpl8dhysfe" path="res://scripts/movingwall.gd" id="7_pkg7o"]
@@ -71,10 +72,15 @@ timecode_as_unix = true
 script = ExtResource("1_aqk2v")
 useLocalMicrophone = false
 
-[node name="OSCReceiver" type="Node" parent="Pai" unique_id=1809085192 node_paths=PackedStringArray("target_server")]
+[node name="OSCReceiverPitch" type="Node" parent="Pai" unique_id=1809085192 node_paths=PackedStringArray("target_server")]
+script = ExtResource("4_ic0uy")
+target_server = NodePath("../../OSCServer")
+osc_address = "/pitch"
+
+[node name="OSCReceiverVolume" type="Node" parent="Pai" unique_id=872320325 node_paths=PackedStringArray("target_server")]
 script = ExtResource("4_gbfbk")
 target_server = NodePath("../../OSCServer")
-osc_address = "/valor"
+osc_address = "/volume"
 
 [node name="Cube" type="MeshInstance3D" parent="Pai" unique_id=1486488004]
 material_override = SubResource("StandardMaterial3D_gbfbk")
