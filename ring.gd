@@ -8,15 +8,14 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	self.visible = isVisible
-	if Input.is_action_just_pressed("RevealCube"):
+	if Input.is_action_just_pressed("RevealDisc"):
 		isVisible = !isVisible
 		
 	speed = Parent.speed
 	if speed < 0.1:
 		speed = 0.1
-	rotation.y += speed * delta
-		
-	scale = Vector3(speed*0.2, speed*0.2, speed*0.2)
-	if scale < Vector3(0.15, 0.15, 0.15):
-		scale = Vector3(0.15, 0.15, 0.15)
-		
+	rotation.x += speed * delta
+	
+	##scale = Vector3(speed*0.2, 0.33, speed*0.2)
+	##if scale < Vector3(0.15, 0.15, 0.15):
+		##scale = Vector3(0.15, 0.33, 0.15)
