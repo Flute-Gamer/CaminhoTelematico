@@ -98,8 +98,13 @@ light_energy = 3.0
 omni_range = 111.286
 script = ExtResource("4_dwbse")
 
-[node name="Ring" type="MeshInstance3D" parent="Pai" unique_id=1205991600]
-transform = Transform3D(0.77, 0, 0, 0, 0.33, 0, 0, 0, 0.77, 0, 0, 0)
+[node name="RingR" type="MeshInstance3D" parent="Pai" unique_id=1205991600]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+mesh = ExtResource("9_ioo17")
+script = ExtResource("8_wse8f")
+
+[node name="RingL" type="MeshInstance3D" parent="Pai" unique_id=1103795967]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0, 0)
 mesh = ExtResource("9_ioo17")
 script = ExtResource("8_wse8f")
 
