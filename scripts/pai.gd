@@ -21,6 +21,8 @@ var factor
 var spectrum
 var magnitude = []
 
+var isWireframe = false
+
 @onready var oscReceiverPitch = $OSCReceiverPitch
 @onready var oscReceiverVolume = $OSCReceiverVolume
 
@@ -39,6 +41,12 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Stop"):
 		stopped = !stopped
+	if Input.is_action_just_pressed("Wireframe"):
+		isWireframe = !isWireframe
+		if isWireframe:
+			get_viewport().debug_draw = Viewport.DEBUG_DRAW_WIREFRAME
+		else:
+			get_viewport().debug_draw = Viewport.DEBUG_DRAW_DISABLED
 	var sample: float
 	if useLocalMicrophone:
 		sample = db_to_linear(AudioServer.get_bus_peak_volume_left_db(record_live_index, 0))

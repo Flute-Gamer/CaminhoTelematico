@@ -10,7 +10,7 @@ func _ready() -> void:
 	grandParent = get_parent().get_parent()
 	visible = false
 
-func _process(delta: float) -> void:
+func _process(delta: float) -> void:	
 	if position.x < -20:
 		position.x = initialX
 	if position.x > 85:
