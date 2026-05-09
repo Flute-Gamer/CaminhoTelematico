@@ -73,7 +73,6 @@ timecode_as_unix = true
 
 [node name="Pai" type="Node3D" parent="." unique_id=1196302755]
 script = ExtResource("1_aqk2v")
-useLocalMicrophone = false
 
 [node name="OSCReceiverPitch" type="Node" parent="Pai" unique_id=1809085192 node_paths=PackedStringArray("target_server")]
 script = ExtResource("4_ic0uy")

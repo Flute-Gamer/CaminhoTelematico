@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var useLocalMicrophone = true
+@export var useLocalMicrophone = false
 
 #movement
 var speed = 0.02
