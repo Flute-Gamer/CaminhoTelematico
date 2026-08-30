@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dbnfw25vsfxlk"]
 
+[ext_resource type="Script" uid="uid://bqsiug3f8kl6a" path="res://scripts/world.gd" id="1_70uel"]
 [ext_resource type="Script" uid="uid://cmphounixw61e" path="res://scripts/pai.gd" id="1_aqk2v"]
 [ext_resource type="Script" uid="uid://b5qi8f3ltwyhx" path="res://scripts/cube.gd" id="2_pkg7o"]
 [ext_resource type="Script" uid="uid://w8v0v76wc4r2" path="res://addons/godOSC/scripts/OSCServer.gd" id="3_pkg7o"]
@@ -12,6 +13,7 @@
 [ext_resource type="Script" uid="uid://blvsxflfy86h7" path="res://scripts/ring.gd" id="8_wse8f"]
 [ext_resource type="ArrayMesh" uid="uid://6mtbhieb2p1e" path="res://obj/ring.obj" id="9_ioo17"]
 [ext_resource type="Script" uid="uid://d1utir12qog53" path="res://scripts/moving_walls_father.gd" id="11_k3n1d"]
+[ext_resource type="PackedScene" uid="uid://ci3fr6ycte7uo" path="res://menu.tscn" id="14_hiqwa"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gbfbk"]
 metallic = 1.0
@@ -62,7 +64,22 @@ albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_aqk2v"]
 
+[sub_resource type="GDScript" id="GDScript_2u3nc"]
+script/source = "extends CanvasLayer
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
 [node name="World" type="Node3D" unique_id=987463657]
+script = ExtResource("1_70uel")
 
 [node name="OSCClient" type="Node" parent="." unique_id=758110633]
 script = ExtResource("6_dwbse")
@@ -353,3 +370,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_f3sb7")
 stream = SubResource("AudioStreamMicrophone_aqk2v")
 autoplay = true
 bus = &"Record"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1390729259]
+script = SubResource("GDScript_2u3nc")
+
+[node name="Menu" parent="CanvasLayer" unique_id=872281771 instance=ExtResource("14_hiqwa")]

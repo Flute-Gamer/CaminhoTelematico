@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://ci3fr6ycte7uo"]
+
+[ext_resource type="FontFile" uid="uid://cnhgo7m5oaot6" path="res://font/Minecraft.ttf" id="1_ouk20"]
+[ext_resource type="PackedScene" uid="uid://bdodn426qdptm" path="res://obj/button_custom.tscn" id="2_mae5d"]
+[ext_resource type="Script" uid="uid://dlbvg0783dhq0" path="res://obj/sair_do_menu.gd" id="3_4hy44"]
+[ext_resource type="Script" uid="uid://cahalnqova1s" path="res://scripts/sair_da_ferramenta.gd" id="3_mae5d"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vsb4k"]
+font = ExtResource("1_ouk20")
+font_size = 40
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+
+[node name="Menu" type="ColorRect" unique_id=872281771]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.21176471, 0.34901962, 1, 0.60784316)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1898475607]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 10
+
+[node name="Label" type="Label" parent="MarginContainer" unique_id=1191017855]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Percurso Telemático"
+label_settings = SubResource("LabelSettings_vsb4k")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=85764154]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 25
+
+[node name="Sair do Menu" parent="MarginContainer/VBoxContainer" unique_id=180228287 instance=ExtResource("2_mae5d")]
+layout_mode = 2
+text = "Sair do Menu"
+script = ExtResource("3_4hy44")
+
+[node name="Sair da Ferramenta2" parent="MarginContainer/VBoxContainer" unique_id=1618384719 instance=ExtResource("2_mae5d")]
+layout_mode = 2
+script = ExtResource("3_mae5d")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Sair do Menu" to="MarginContainer/VBoxContainer/Sair do Menu" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Sair da Ferramenta2" to="MarginContainer/VBoxContainer/Sair da Ferramenta2" method="_on_pressed"]

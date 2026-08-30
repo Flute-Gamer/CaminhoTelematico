@@ -1,0 +1,4 @@
+extends Button
+
+func _on_pressed():
+	get_tree().current_scene.get_node("CanvasLayer/Menu").hide()
