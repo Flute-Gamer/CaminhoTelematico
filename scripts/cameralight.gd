@@ -1,18 +1,28 @@
 extends OmniLight3D
 
 var grandParent
+var wait = false
 
 func _ready() -> void:	
 	#ready para luz
 	grandParent = get_parent().get_parent()
 	randomize()
-	color()
+	color_loop()
 
 func _process(_delta: float) -> void:
-	pass
+	wait = grandParent.wait
+	
+func color_loop():
+	while is_inside_tree():
+		color()
+		if wait:
+			var waitTime = randf_range(0.5, 10.0)
+			await get_tree().create_timer(waitTime).timeout
+		else:
+			await get_tree().process_frame
 	
 func color():
-	var index_color = grandParent.indexColor()
+	var index_color = grandParent.index_color
 	if index_color == 0:
 		self.light_color = Color(1, 0, 0)
 	elif index_color == 1:
@@ -27,9 +37,4 @@ func color():
 		self.light_color = Color(0, 0, 1)
 	else:
 		self.light_color = Color(0.56, 0, 1)
-		
-	var waitTime = randf_range(0.5, 8.0)
-	await get_tree().create_timer(waitTime).timeout
-	color()
-	
 	return	

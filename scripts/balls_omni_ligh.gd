@@ -9,6 +9,7 @@ var speed = 0.01
 var globalZ = 0
 var volume_samples: Array = []
 var isVisible = true
+var wait = false
 
 func _ready() -> void:
 	#ready para girar
@@ -24,9 +25,10 @@ func _ready() -> void:
 	
 	#ready para luz
 	randomize()
-	color()
+	color_loop()
 
 func _process(delta: float) -> void:
+	wait = grandParent.wait
 	speed = grandParent.speed	
 	if speed < 0.05:
 		speed = 0.05
@@ -45,8 +47,17 @@ func _process(delta: float) -> void:
 		var new_z = sin(angle) * radius
 		global_position = grandParent.global_position + Vector3(0, new_y, new_z)
 	
+func color_loop():
+	while is_inside_tree():
+		color()
+		if wait:
+			var waitTime = randf_range(0.5, 10.0)
+			await get_tree().create_timer(waitTime).timeout
+		else:
+			await get_tree().process_frame
+
 func color():
-	var index_color = grandParent.indexColor()
+	var index_color = grandParent.index_color
 	if index_color == 0:
 		self.light_color = Color(1, 0, 0)
 	elif index_color == 1:
@@ -61,9 +72,4 @@ func color():
 		self.light_color = Color(0, 0, 1)
 	else:
 		self.light_color = Color(0.56, 0, 1)
-		
-	var waitTime = randf_range(0.5, 8.0)
-	await get_tree().create_timer(waitTime).timeout
-	color()
-	
 	return	

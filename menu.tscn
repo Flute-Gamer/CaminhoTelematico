@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://cahalnqova1s" path="res://scripts/sair_da_ferramenta.gd" id="3_mae5d"]
 [ext_resource type="Script" uid="uid://b1tlf4iad0qle" path="res://scripts/microfone_sistema.gd" id="5_ytr4m"]
 [ext_resource type="Script" uid="uid://cd811piqdcbn0" path="res://scripts/microfone_osc.gd" id="6_l48gv"]
+[ext_resource type="Script" uid="uid://da3haumfdrik2" path="res://scripts/only_flute_frequencies.gd" id="7_ecwwl"]
+[ext_resource type="Script" uid="uid://vp6tclwagtse" path="res://scripts/random_colors_time.gd" id="8_kk3ma"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vsb4k"]
 font = ExtResource("1_ouk20")
@@ -43,7 +45,7 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-theme_override_constants/separation = 25
+theme_override_constants/separation = 100
 
 [node name="Sair do Menu" parent="MarginContainer/VBoxContainer" unique_id=180228287 instance=ExtResource("2_mae5d")]
 layout_mode = 2
@@ -80,7 +82,35 @@ theme_override_font_sizes/font_size = 30
 text = "Microfone OSC"
 script = ExtResource("6_l48gv")
 
+[node name="OnlyFluteFrequencies" type="CheckButton" parent="." unique_id=1362706309]
+layout_mode = 0
+offset_left = 282.0
+offset_top = 187.0
+offset_right = 661.0
+offset_bottom = 234.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_ouk20")
+theme_override_font_sizes/font_size = 30
+text = "Only Flute Frequencies"
+script = ExtResource("7_ecwwl")
+
+[node name="RandomColorsTime" type="CheckButton" parent="." unique_id=1291661014]
+layout_mode = 0
+offset_left = 282.0
+offset_top = 263.0
+offset_right = 661.0
+offset_bottom = 310.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_ouk20")
+theme_override_font_sizes/font_size = 30
+text = "Random Colors Time"
+script = ExtResource("8_kk3ma")
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Sair do Menu" to="MarginContainer/VBoxContainer/Sair do Menu" method="_on_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Sair da Ferramenta2" to="MarginContainer/VBoxContainer/Sair da Ferramenta2" method="_on_pressed"]
 [connection signal="toggled" from="MicrofoneSistema" to="MicrofoneSistema" method="_on_toggled"]
 [connection signal="toggled" from="MicrofoneOSC" to="MicrofoneOSC" method="_on_toggled"]
+[connection signal="toggled" from="OnlyFluteFrequencies" to="OnlyFluteFrequencies" method="_on_toggled"]
+[connection signal="toggled" from="RandomColorsTime" to="RandomColorsTime" method="_on_toggled"]

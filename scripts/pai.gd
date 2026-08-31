@@ -12,6 +12,7 @@ var momentspeed: float
 const array_size = 1000
 const MAX_SAMPLES: int = 10
 var stopped = false
+var wait = false
 
 #colors
 var bands = 7
@@ -20,6 +21,7 @@ var bands = 7
 var factor
 var spectrum
 var magnitude = []
+var index_color = 0
 
 var isWireframe = false
 
@@ -32,14 +34,14 @@ func _ready() -> void:
 		speedArray[i] = 0.1
 		
 	magnitude.resize(bands)
-	factor = pow(maxFreq/minFreq, 1.0/bands)
+	set_frequencies(maxFreq, minFreq)
 	
 	if useLocalMicrophone:
 		record_live_index = AudioServer.get_bus_index('Record')
 		spectrum = AudioServer.get_bus_effect_instance(record_live_index, 1)
 
 func _process(_delta: float) -> void:
-	print(useLocalMicrophone)
+	calculateIndexColor()
 	if Input.is_action_just_pressed("Stop"):
 		stopped = !stopped
 	if Input.is_action_just_pressed("Wireframe"):
@@ -82,7 +84,7 @@ func controlSpeed(momspeed: float):
 	index = index + 1
 	return	
 	
-func indexColor():
+func calculateIndexColor():
 	if useLocalMicrophone:
 		for i in range(bands):
 			if factor != null:
@@ -90,8 +92,8 @@ func indexColor():
 					minFreq*pow(factor, i), 
 					minFreq*pow(factor, i+1))
 				magnitude[i] = max(aud.x, aud.y)
-		var index_color = maxIndex(magnitude)	
-		return index_color
+		index_color = maxIndex(magnitude)	
+		return 
 	else:
 		if oscReceiverPitch == null:
 			return 0
@@ -100,7 +102,8 @@ func indexColor():
 			var low = minFreq * pow(factor, i)
 			var high = minFreq * pow(factor, i + 1)
 			if freq >= low and freq < high:
-				return i
+				index_color = i
+		return
 	
 func average_array(arr: Array) -> float:
 	var avg = 0.0
@@ -118,3 +121,10 @@ func maxIndex(arr):
 
 func set_input_mode(local_microphone: bool):
 	useLocalMicrophone = local_microphone
+	return
+
+func set_frequencies(maxfreq: float, minfreq: float):
+	maxFreq = maxfreq
+	minFreq = minfreq
+	factor = pow(maxfreq/minfreq, 1.0/bands)
+	return
