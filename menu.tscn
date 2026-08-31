@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://bdodn426qdptm" path="res://obj/button_custom.tscn" id="2_mae5d"]
 [ext_resource type="Script" uid="uid://dlbvg0783dhq0" path="res://obj/sair_do_menu.gd" id="3_4hy44"]
 [ext_resource type="Script" uid="uid://cahalnqova1s" path="res://scripts/sair_da_ferramenta.gd" id="3_mae5d"]
-[ext_resource type="Script" uid="uid://b1tlf4iad0qle" path="res://microfone_sistema.gd" id="5_ytr4m"]
-[ext_resource type="Script" uid="uid://cd811piqdcbn0" path="res://microfone_osc.gd" id="6_l48gv"]
+[ext_resource type="Script" uid="uid://b1tlf4iad0qle" path="res://scripts/microfone_sistema.gd" id="5_ytr4m"]
+[ext_resource type="Script" uid="uid://cd811piqdcbn0" path="res://scripts/microfone_osc.gd" id="6_l48gv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vsb4k"]
 font = ExtResource("1_ouk20")
