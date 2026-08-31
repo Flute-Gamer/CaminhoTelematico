@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var useLocalMicrophone = false
+@export var useLocalMicrophone = true
 
 #movement
 var speed = 0.02
@@ -39,6 +39,7 @@ func _ready() -> void:
 		spectrum = AudioServer.get_bus_effect_instance(record_live_index, 1)
 
 func _process(_delta: float) -> void:
+	print(useLocalMicrophone)
 	if Input.is_action_just_pressed("Stop"):
 		stopped = !stopped
 	if Input.is_action_just_pressed("Wireframe"):
@@ -114,4 +115,6 @@ func maxIndex(arr):
 		if arr[i] > arr[maxindex]:
 			maxindex = i
 	return maxindex
-	
+
+func set_input_mode(local_microphone: bool):
+	useLocalMicrophone = local_microphone

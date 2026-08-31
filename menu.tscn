@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://bdodn426qdptm" path="res://obj/button_custom.tscn" id="2_mae5d"]
 [ext_resource type="Script" uid="uid://dlbvg0783dhq0" path="res://obj/sair_do_menu.gd" id="3_4hy44"]
 [ext_resource type="Script" uid="uid://cahalnqova1s" path="res://scripts/sair_da_ferramenta.gd" id="3_mae5d"]
+[ext_resource type="Script" uid="uid://b1tlf4iad0qle" path="res://microfone_sistema.gd" id="5_ytr4m"]
+[ext_resource type="Script" uid="uid://cd811piqdcbn0" path="res://microfone_osc.gd" id="6_l48gv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vsb4k"]
 font = ExtResource("1_ouk20")
@@ -52,5 +54,33 @@ script = ExtResource("3_4hy44")
 layout_mode = 2
 script = ExtResource("3_mae5d")
 
+[node name="MicrofoneSistema" type="CheckButton" parent="." unique_id=1418266748]
+layout_mode = 0
+offset_left = 302.0
+offset_top = 74.0
+offset_right = 663.0
+offset_bottom = 121.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_ouk20")
+theme_override_font_sizes/font_size = 30
+text = "Microfone do Sistema"
+script = ExtResource("5_ytr4m")
+
+[node name="MicrofoneOSC" type="CheckButton" parent="." unique_id=909268522]
+layout_mode = 0
+offset_left = 302.0
+offset_top = 120.0
+offset_right = 663.0
+offset_bottom = 167.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_ouk20")
+theme_override_font_sizes/font_size = 30
+text = "Microfone OSC"
+script = ExtResource("6_l48gv")
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Sair do Menu" to="MarginContainer/VBoxContainer/Sair do Menu" method="_on_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Sair da Ferramenta2" to="MarginContainer/VBoxContainer/Sair da Ferramenta2" method="_on_pressed"]
+[connection signal="toggled" from="MicrofoneSistema" to="MicrofoneSistema" method="_on_toggled"]
+[connection signal="toggled" from="MicrofoneOSC" to="MicrofoneOSC" method="_on_toggled"]
